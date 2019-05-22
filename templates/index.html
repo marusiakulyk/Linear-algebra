@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1><p>predictor</p></h1>
+</header>
+<main>
+
+
+    <section class="first-way-calculation">
+        <h3><p>Fill in the fields to predict campaign profits based on the experience of other companies</p></h3>
+        <form id="time" action="http://localhost:5000/result" method="post">
+
+            <p><input placeholder="Assets ($M)" name="assets"></p>
+            <p><input placeholder="Total Stockholder Equity ($M)" name="tse"></p>
+            <p><input placeholder="Employee" name="employee"></p>
+            <p><input placeholder="Revenues ($M)" name="revenues"></p>
+            <p>
+                <button type="submit" form="data">Calculate</button>
+            </p>
+
+        </form>
+    </section>
+    <section class="second-way-calculation">
+        <h3><p>Download the cvs file and fill in the fields to predict the value according to the column number.</p>
+        </h3>
+        <form id="data" action="http://localhost:5000/result1" method="post" enctype=multipart/form-data>
+            <input type="file" placeholder="Upload file" name="file">
+            <p> <input placeholder="Your vector(separated with spaces)" name="vector"></p>
+            <p>
+                <button type="submit" form="data">Calculate</button>
+            </p>
+        </form>
+
+    </section>
+</main>
+
+</body>
+</html>
