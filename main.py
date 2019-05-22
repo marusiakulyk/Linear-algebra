@@ -1,21 +1,7 @@
-import pandas as pd
 import Linear_regression
 
-def main():
-    data = pd.read_csv("Fortune500beg.csv")
-    print(data)
-    y = list(data['Profits ($M)'])
-    for i in range(len(y)):
-        y[i] = [y[i]]
 
-    matrix = []
-    for i in range(len(data['Profits ($M)'])):
-        matrix.append([data['Revenues ($M)'][i], data['Assets ($M)'][i], data['Total Stockholder Equity ($M)'][i]])
-    print(matrix)
-    transposed = Linear_regression.transpose(matrix)
-    print(transposed)
-    multiplication = Linear_regression.multiplication(matrix, transposed)
-    coef = Linear_regression.lin(multiplication, transposed, y)
-    return coef
-
-print(main())
+def process_data(matrix, y):
+    coef = Linear_regression.lin(matrix, y)
+    res = coef[0] + Linear_regression.vector_matrix_multip(coef[1:], y)
+    return res

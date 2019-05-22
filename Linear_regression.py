@@ -10,7 +10,7 @@ def transpose(matrix):
 
 
 transposed = transpose([[1, 0], [1, 1], [1, 2]])
-
+print(transposed)
 
 def multiplication(matrix1, matrix2):
     outcome = [[0 for i in range(len(matrix2[0]))] for j in range(len(matrix1))]
@@ -22,10 +22,13 @@ def multiplication(matrix1, matrix2):
 
 
 x = multiplication(transpose([[1, 0], [1, 1], [1, 2]]), [[1, 0], [1, 1], [1, 2]])
+print(x)
+def lin(X, y):
+    transpose1 = transpose(X)
+    inverse = inv(multiplication(transpose1, X))
 
-def lin(x, transposed, y):
-    inversed = inv(x)
-
-    part = multiplication(inversed, transposed)
+    part = multiplication(inverse, transpose1)
     linear_regression = multiplication(part, y)
     return linear_regression
+
+print(lin(x, [[3,3]]))

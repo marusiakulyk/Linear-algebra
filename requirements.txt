@@ -1,0 +1,7 @@
+Flask==0.12.2
+matplotlib==3.0.0
+numpy==1.14.0
+pandas==0.22.0
+requests==2.18.4
+responses==0.8.1
+fancyimpute==0.4.3
