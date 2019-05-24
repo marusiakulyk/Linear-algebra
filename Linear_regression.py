@@ -9,26 +9,36 @@ def transpose(matrix):
     return outcome
 
 
-transposed = transpose([[1, 0], [1, 1], [1, 2]])
-print(transposed)
-
 def multiplication(matrix1, matrix2):
     outcome = [[0 for i in range(len(matrix2[0]))] for j in range(len(matrix1))]
     for i in range(len(matrix1)):
         for j in range(len(matrix2[0])):
             for k in range(len(matrix2)):
-                outcome[i][j] += matrix1[i][k] * matrix2[k][j]
+                try:
+                    outcome[i][j] += float(round(float(matrix1[i][k]) * float(matrix2[k][j]), 3))
+                except ValueError or TypeError:
+                    pass
     return outcome
 
 
-x = multiplication(transpose([[1, 0], [1, 1], [1, 2]]), [[1, 0], [1, 1], [1, 2]])
-print(x)
+def vector_matrix_multip(matrix, vector):
+    results = []
+    for i in range(len(matrix)):
+        items = 0
+        for j in range(len(vector)):
+            try:
+                items += float(round(float(matrix[i][j]), 3)) * float(round(float(vector[j]), 3))
+            except ValueError:
+                pass
+            except TypeError:
+                pass
+        results.append(items)
+    return results
+
+
 def lin(X, y):
     transpose1 = transpose(X)
     inverse = inv(multiplication(transpose1, X))
-
     part = multiplication(inverse, transpose1)
-    linear_regression = multiplication(part, y)
+    linear_regression = vector_matrix_multip(part, y)
     return linear_regression
-
-print(lin(x, [[3,3]]))
